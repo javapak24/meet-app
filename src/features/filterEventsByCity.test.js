@@ -47,7 +47,8 @@ defineFeature(feature, test => {
         });
 
         then('the user should recieve a list of cities (suggestions) that match what they’ve typed', () => {
-
+            const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem'); 
+            expect(suggestionListItems).toHaveLength(2);
         });
     });
 

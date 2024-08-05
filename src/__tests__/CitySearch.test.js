@@ -83,7 +83,7 @@ describe('<CitySearch /> integration', () => {
   const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('listitem')[0];
   await user.click(BerlinGermanySuggestion);
 
-  expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
+  expect(cityTextBox).toHaveValue("Berlin");
 });
 
 });
