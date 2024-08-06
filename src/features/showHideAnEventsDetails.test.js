@@ -7,18 +7,14 @@ import userEvent from '@testing-library/user-event';
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
 defineFeature(feature, test => {
-    test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
-        given('the user opened the app', () => {
-
-        });
-
+    test('An event element is collapsed by default.', ({ given, when, then }) => {
         let AppComponent;
-        when('the list of events are rendered', () => {
+        given('the user opened the app', () => {
           AppComponent = render(<App />);
         });
 
-        then('event details should not show',async () => {
-            const AppDOM = AppComponent.container.firstChild;
+        when('the list of events are rendered', async () => {
+          const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
       
             await waitFor(() => {
@@ -26,8 +22,39 @@ defineFeature(feature, test => {
               expect(EventListItems.length).toBe(32);
             });
       
+        });
+
+        then('event details should not show', async () => {
+            
           });
     });
 
- 
+    test('User can expand an event to see details.', ({ given, when, then }) => {
+
+      given('the user is seeing the events rendered', () => {
+
+      });
+
+      when('the user clicks the show details button', () => {
+      });
+
+      then('the event details should be shown',async () => {
+          
+        });
+    });
+
+    test('User can collapse an event to hide details.', ({ given, when, then }) => {
+
+      given('the user has clicked the show details button', () => {
+
+      });
+
+      when('the user clicks the hide details button', () => {
+      });
+
+      then('the event details should be hidden',async () => {
+        
+      });
+    });
+
 });
