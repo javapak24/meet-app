@@ -15,6 +15,7 @@ defineFeature(feature, test => {
         });
 
         when('I have not typed a number on number-of-events field', () => {
+            
         });
 
         then('I should not be able to see a list of all events',async () => {
