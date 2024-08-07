@@ -4,22 +4,38 @@ import App from '../App';
 import mockData, { getEvents } from '../mock-data';
 import userEvent from '@testing-library/user-event';
 
-const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
+const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 
 defineFeature(feature, test => {
-    test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
-      
-        given('the user opened the app', () => {
+    test('User does not type in the number-of-events field', ({ given, when, then }) => {
+        let AppComponent;
+        given('I am a user', () => {
+            AppComponent = render(<App />);
 
         });
 
-        when('the list of events are rendered', () => {
+        when('I have not typed a number on number-of-events field', () => {
         });
 
-        then('event details should not show',async () => {
+        then('I should not be able to see a list of all events',async () => {
             
-          });
+        });
     });
 
+    test('User types a number in the number-of-events field', ({ given, when, then }) => {
+        let AppComponent;
+        given('I am a user', () => {
+            AppComponent = render(<App />);
+
+        });
+
+        when('I type a number on number-of-events field', () => {
+
+        });
+
+        then('I should be able to see a list of events with the number I typed as the length',async () => {
+            
+        });
+    });
  
 });

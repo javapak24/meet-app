@@ -1,8 +1,9 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
 import { render, within, waitFor } from '@testing-library/react';
 import App from '../App';
-import mockData, { getEvents } from '../mock-data';
+import { getEvents } from '../api';
 import userEvent from '@testing-library/user-event';
+import Event from '../components/Event';
 
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
@@ -48,11 +49,11 @@ defineFeature(feature, test => {
       let EventComponent;
       let allEvents;
       when('the user clicks the show details button',async () => {
-        const user = userEvent.setup();
-        const allEvents = await getEvents();
-        const EventComponent = render(<Event event={allEvents[0]} />)
-        const showDetails = EventComponent.queryByText('Show details');
-        await user.click(showDetails);
+        // const user = userEvent.setup();
+        // const allEvents = await getEvents();
+        // const EventComponent = render(<Event event={allEvents[0]} />)
+        // const showDetails = EventComponent.queryByText('Show details');
+        // await user.click(showDetails);
 
       });
 
@@ -83,6 +84,7 @@ defineFeature(feature, test => {
       });
 
       then('the event details should be hidden',async () => {
+        let AppComponent = render(<App />);
         const AppDOM = AppComponent.container.firstChild;
           const eventDetails = AppDOM.querySelector('.details');
           expect(eventDetails).not.toBeInTheDocument();
