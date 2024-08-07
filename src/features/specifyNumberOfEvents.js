@@ -3,6 +3,7 @@ import { render, within, waitFor } from '@testing-library/react';
 import App from '../App';
 import mockData, { getEvents } from '../mock-data';
 import userEvent from '@testing-library/user-event';
+import NumberOfEvents from '../components/NumberOfEvents';
 
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 
@@ -34,13 +35,19 @@ defineFeature(feature, test => {
 
         });
 
-        when('I type a number on number-of-events field', () => {
-            let user = userEvent.setup();
-            
+        when('I type a number on number-of-events field', async () => {
+            // const user = userEvent.setup();
+            // const allEvents = await getEvents();
+        const NumberOfEventComponent = render(<NumberOfEvents currentNOE={3} />)
+        // const showDetails = EventComponent.queryByText('Show details');
+        // await user.click(showDetails);
         });
 
         then('I should be able to see a list of events with the number I typed as the length',async () => {
-            
+            await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+                expect(EventListItems.length).toBe(3);
+              });  
         });
     });
  
