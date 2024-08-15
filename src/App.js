@@ -20,7 +20,7 @@ const App = () => {
 
 
   useEffect(() => {
-    if (navigator.onLine) {
+    if (!navigator.onLine) {
       // set the warning alert message to an empty string ""
       setWarningAlert('App offline, last loaded events will be used for events')
     } else {
