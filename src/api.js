@@ -79,6 +79,14 @@ export const getEvents = async () => {
     return events?JSON.parse(events):[];
   }
 
+
+
+
+
+
+/////look here for problem august 19th
+
+
   const token = await getAccessToken();
   const url =  "https://ednvy55cy9.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
@@ -89,10 +97,10 @@ export const getEvents = async () => {
       .then((response) => response.json())
       .then((data) => {
         if (!data) return [];
-        NProgress.done();
         localStorage.setItem("lastEvents", JSON.stringify(data));
         //access data directly instead not data.events
         const result = data;
+        NProgress.done();
         return result;
       }
     ).catch((error) => {
