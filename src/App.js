@@ -28,7 +28,7 @@ const App = () => {
       setWarningAlert('')
     }
     fetchData();
-  }, [currentCity]);
+  }, [currentCity]); 
 
   const fetchData = async () => {
     const allEvents = await getEvents();
